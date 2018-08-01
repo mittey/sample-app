@@ -28,6 +28,13 @@ namespace Contact.API
         {
             var dbConnection = Configuration.GetConnectionString("DefaultConnection");
 
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
+
             services.AddDbContext<ContactContext>(options => options.UseSqlServer(dbConnection));
 
             services.AddTransient<IContactService, ContactService>();
@@ -40,6 +47,8 @@ namespace Contact.API
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+
+            app.UseCors("MyPolicy");
 
             app.UseSwagger();
 
