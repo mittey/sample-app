@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Contact.API.Exceptions
 {
-    public class EntityNotFoundException
+    public class EntityNotFoundException : Exception
     {
+        public EntityNotFoundException(string type)
+            : base($"Entities of type {type} not found.")
+        {
+        }
     }
 }

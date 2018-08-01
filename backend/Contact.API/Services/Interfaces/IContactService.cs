@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Contact.API.Dto;
 
 namespace Contact.API.Services.Interfaces
 {
-    internal interface IContactService
+    public interface IContactService
     {
-        Task<ContactDto> GetContactByIdAsync(int contactId);
-        Task<List<ContactDto>> GetAllContactsAsync();
-        Task<ContactDto> CreateContactAsync();
-        Task<ContactDto> EditContactAsync(int contactId);
+        Task<Domain.Entities.Contact> GetContactByIdAsync(int contactId);
+        Task<List<Domain.Entities.Contact>> GetAllContactsAsync();
+        Task<Domain.Entities.Contact> CreateContactAsync(Domain.Entities.Contact contact);
+        Task<Domain.Entities.Contact> EditContactAsync(Domain.Entities.Contact contact);
         Task DeleteContactAsync(int contactId);
     }
 }

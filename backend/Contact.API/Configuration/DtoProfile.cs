@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Contact.API.Domain.Dto;
 
 namespace Contact.API.Configuration
 {
-    public class DtoProfile
+    public class DtoProfile : Profile
     {
+        public DtoProfile()
+        {
+            CreateMap<Domain.Entities.Contact, ContactDto>().ReverseMap();
+        }
     }
 }
