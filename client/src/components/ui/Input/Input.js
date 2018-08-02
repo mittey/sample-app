@@ -10,15 +10,17 @@ import {
 const input = props => {
   return (
     <Col md={4}>
-      <FormGroup validationState={props.isValid ? null : "error"}>
+      <FormGroup
+        validationState={props.isValid || !props.isTouched ? null : "error"}
+      >
         <ControlLabel>{props.label}</ControlLabel>
         <FormControl
           type="text"
           placeholder={props.placeholder}
           onChange={props.changed}
         />
-        {props.isValid ? null : (
-          <HelpBlock>{props.validationConfig.errorMessage}</HelpBlock>
+        {props.isValid || !props.isTouched ? null : (
+          <HelpBlock>{props.errorMessage}</HelpBlock>
         )}
       </FormGroup>
     </Col>

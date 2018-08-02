@@ -22,6 +22,39 @@ export const setFormData = (value, key) => {
   };
 };
 
+export const getContacts = () => dispatch => {
+  dispatch(getContactStart());
+
+  axios
+    .get("")
+    .then(request => {
+      dispatch(getContactSuccess(request.data));
+    })
+    .catch(error => {
+      dispatch(getContactFail(error));
+    });
+};
+
+const getContactSuccess = contacts => {
+  return {
+    type: actionTypes.GET_CONTACTS_SUCCESS,
+    contacts: contacts
+  };
+};
+
+const getContactFail = error => {
+  return {
+    type: actionTypes.GET_CONTACTS_FAIL,
+    error: error
+  };
+};
+
+const getContactStart = () => {
+  return {
+    type: actionTypes.GET_CONTACTS_START
+  };
+};
+
 const createContactStart = () => {
   return {
     type: actionTypes.CREATE_CONTACT_START

@@ -6,10 +6,9 @@ namespace Contact.API.Domain.Entities
     {
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
-
         [Required] public string Name { get; set; }
-
         public string Email { get; set; }
         public string Phone { get; set; }
+        [Required] public string Gender { get; set; }
     }
 }
